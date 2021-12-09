@@ -1,0 +1,27 @@
+[
+  {
+    "test_type": "blood",
+    "test_date": "01-02-2021",
+    "test_time": "10:30AM"
+  },
+  {
+    "test_type": "blood",
+    "test_date": "01-02-2021",
+    "test_time": "10:30AM"
+  },
+  {
+    "test_type": "covid",
+    "test_date": "01-02-2021",
+    "test_time": "10:30AM"
+  },
+  {
+    "test_type": "covid",
+    "test_date": "01-02-2021",
+    "test_time": "10:30AM"
+  },
+  {
+    "test_type": "blood",
+    "test_date": "01-02-2021",
+    "test_time": "10:30AM"
+  }
+]
