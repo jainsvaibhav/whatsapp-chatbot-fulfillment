@@ -71,10 +71,23 @@ module.exports = {
         });
       });
 
-      req.write(JSON.stringify(out));
+      req.write(JSON.stringify({
+        appointmentId: out.appointmentId,
+        firstname: out.firstname,
+        lastname: out.lastname,
+        date: out.date,
+        time: out.time,
+        adharFrontImagePath: out.adharFrontImagePath,
+        adharBackImagePath: out.adharBackImagePath,
+        latitude: out.latitude,
+        longitude: out.longitude,
+        mobile: out.mobile,
+        locationUrl: out.locationUrl,
+        address: out.address 
+        }));
       agent.add(message);
       req.end();
-      
+
     });
   },
   set_contexts(agent, old_context, new_context, param) {
