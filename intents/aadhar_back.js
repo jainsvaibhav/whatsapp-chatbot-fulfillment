@@ -43,48 +43,39 @@ module.exports = {
       adharBackImagePath:adharBackImagePath
     });
     console.log("output", out);
-    agent.add(message);
-
-//     return new Promise(function(resolve, reject) {
-//       console.log("out inside Promise", out)
-//       var http = require("http");
-//       var options = {
-//         "method": "POST",
-//         "hostname": "waba.360dialog.io",
-//       "port": null,
-//       "path": "/v1/messages",
-//       "headers": {
-//         "content-type": "application/json",
-//         'd360-api-key': 'GBTsBmnqxjdaVkH32684hEYgAK',
-//           "cache-control": "no-cache",
-//       "postman-token": "c737341c-34b0-17df-8ba4-64cd55bbf86d"
-//         }
-//       };
-//       var req = http.request(options, function (res) {
-//       var chunks = [];
-
-//       res.on("data", function (chunk) {
-//         chunks.push(chunk);
-//       });
-
-//       res.on("end", function () {
-//         var body = Buffer.concat(chunks);
-//         console.log(body.toString());
-//       });
-//     });
-
-//     req.write(JSON.stringify({ to: out.mobile,
-//   type: 'image',
-//   recipient_type: 'individual',
-//   image: 
-//    { link: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
-//      caption: 'your-image-caption' } }));
-// // agent.add(message);
-// req.end();
-
-    // });
-
     // agent.add(message);
+    return new Promise(function(resolve, reject) {
+      var http = require("http");
+      var options = {
+        "method": "POST",
+        "hostname": "145gkmq34e.execute-api.us-east-1.amazonaws.com",
+        "port": null,
+        "path": "/prod/data-to-db",
+        "headers": {
+          "content-type": "application/json",
+          "cache-control": "no-cache",
+          "postman-token": "254d1587-42ad-32a7-1e0a-dc92905632bf"
+        }
+      };
+
+      var req = http.request(options, function (res) {
+        var chunks = [];
+
+        res.on("data", function (chunk) {
+          chunks.push(chunk);
+        });
+
+        res.on("end", function () {
+          var body = Buffer.concat(chunks);
+          console.log(body.toString());
+        });
+      });
+
+      req.write(JSON.stringify(out));
+      agent.add(message);
+      req.end();
+      
+    });
   },
   set_contexts(agent, old_context, new_context, param) {
     let i = agent.contexts.findIndex((x) => x.name == old_context);
